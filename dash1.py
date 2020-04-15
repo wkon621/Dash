@@ -13,17 +13,14 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
+newlocationsdf = pd.read_csv('covid19.csv')
+
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
-
-newlocationsdf = pd.read_csv('sarscov2-output.csv')
-newlocationsdf
-
-newlocationsdf = pd.read_csv('sarscov2-output.csv')
-newlocationsdf
 
 newlocationsdf['text'] = newlocationsdf['province'] + '<br>' + newlocationsdf['country'] + '<br>' + newlocationsdf['confirmed'].astype(str)
                                                                                                                   
