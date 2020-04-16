@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 14 17:13:16 2020
-
-@author: IAN
-"""
-
 import pandas as pd
 from pandas import DataFrame
 import plotly
@@ -13,14 +6,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-newlocationsdf = pd.read_csv('./data/sarscov2-output.csv')
-
-
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-server = app.server
+newlocationsdf = pd.read_csv('./data/covid19.csv')
 
 newlocationsdf['text'] = newlocationsdf['province'] + '<br>' + newlocationsdf['country'] + '<br>' + newlocationsdf['confirmed'].astype(str)
                                                                                                                   
@@ -60,7 +46,6 @@ fig.update_layout(
             subunitwidth = 0.5
         ),
     )
-#fig.show()
 
 app = dash.Dash(__name__)
 server = app.server
