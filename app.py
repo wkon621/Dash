@@ -13,7 +13,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-newlocationsdf = pd.read_csv('covid19.csv')
+newlocationsdf = pd.read_csv('./data/sarscov2-output.csv')
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -62,8 +62,11 @@ fig.update_layout(
     )
 #fig.show()
 
-app = dash.Dash()
+app = dash.Dash(__name__)
+server = app.server
 app.layout = html.Div([
     dcc.Graph(figure=fig)
 ])
-app.run_server(debug=False)  # Turn off reloader if inside Jupyter
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
